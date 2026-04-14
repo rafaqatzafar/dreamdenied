@@ -648,9 +648,8 @@ document.querySelectorAll(".cu").forEach(function(el){ cio.observe(el); });
 var sharedCount = 0;
 var recentSigs = [];
 
-// JSONBin credentials
-var BIN_ID = "69dea2b3aaba882197fc5ba9";
-var API_KEY = "$2a$10$ROKZ/Zt3dRA5eM/qPXJ.zeTmowHTeGmx5tSKfCKCPZWzx2NG3zz8G";
+// Google Sheets web app
+var API_URL = "https://script.google.com/macros/s/AKfycbybRZKj1-J_wUusQis9RbXJy3Wwg-rj_gWmzlxUCGwTmJrlZvecWjUaKtRJot5zws5A/exec";
 
 function setCount(count) {
   sharedCount = Number(count) || 0;
@@ -658,18 +657,9 @@ function setCount(count) {
 }
 
 async function loadSharedCount() {
-  if (!BIN_ID || BIN_ID.indexOf("PASTE_YOUR") === 0 || !API_KEY || API_KEY.indexOf("PASTE_YOUR") === 0) {
-    console.warn("JSONBin is not configured yet. Add BIN_ID and API_KEY.");
-    return;
-  }
-
   try {
-    var res = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest?t=" + Date.now(), {
+    var res = await fetch(API_URL + "?t=" + Date.now(), {
       method: "GET",
-      headers: {
-        "X-Master-Key": API_KEY,
-        "X-Bin-Meta": "false"
-      },
       cache: "no-store"
     });
 
@@ -685,44 +675,28 @@ async function loadSharedCount() {
   }
 }
 
-async function incrementSharedCount() {
-  if (!BIN_ID || BIN_ID.indexOf("PASTE_YOUR") === 0 || !API_KEY || API_KEY.indexOf("PASTE_YOUR") === 0) {
-    throw new Error("JSONBin is not configured yet.");
-  }
-
-  var readRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest?t=" + Date.now(), {
-    method: "GET",
+async function incrementSharedCount(payload) {
+  var res = await fetch(API_URL, {
+    method: "POST",
     headers: {
-      "X-Master-Key": API_KEY,
-      "X-Bin-Meta": "false"
+      "Content-Type": "text/plain;charset=utf-8"
     },
-    cache: "no-store"
+    body: JSON.stringify(payload)
   });
 
-  if (!readRes.ok) {
-    var readMsg = await readRes.text();
-    throw new Error("Failed to read current count: " + readRes.status + " " + readMsg);
+  if (!res.ok) {
+    var msg = await res.text();
+    throw new Error("Failed to submit petition: " + res.status + " " + msg);
   }
 
-  var readData = await readRes.json();
-  var nextCount = (Number(readData.count) || 0) + 1;
+  var data = await res.json();
 
-  var writeRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Master-Key": API_KEY
-    },
-    body: JSON.stringify({ count: nextCount })
-  });
-
-  if (!writeRes.ok) {
-    var writeMsg = await writeRes.text();
-    throw new Error("Failed to update shared count: " + writeRes.status + " " + writeMsg);
+  if (!data || !data.success) {
+    throw new Error((data && data.error) || "Petition submission failed.");
   }
 
-  setCount(nextCount);
-  return nextCount;
+  setCount(data.count);
+  return Number(data.count) || 0;
 }
 
 loadSharedCount();
@@ -766,7 +740,12 @@ document.getElementById("pform").addEventListener("submit", async function(e) {
 
   try {
     recentSigs.push({fn:fn,ln:ln,em:em,ct:ct,ts:new Date().toISOString()});
-    var newCount = await incrementSharedCount();
+    var newCount = await incrementSharedCount({
+      firstName: fn,
+      lastName: ln,
+      email: em,
+      cityCounty: ct
+    });
 
     document.getElementById("sucName").textContent = "Thank you, " + fn + "!";
     document.getElementById("sucCount").textContent = newCount + " Georgian" + (newCount===1?"":"s") + " have now signed";
@@ -778,7 +757,7 @@ document.getElementById("pform").addEventListener("submit", async function(e) {
     document.getElementById("ccb").classList.remove("ck");
   } catch (err) {
     console.error(err);
-    alert("The petition could not be submitted yet. Make sure your JSONBin BIN_ID and API_KEY are added correctly.");
+    alert("The petition could not be submitted. Check your Google Apps Script deployment and sharing settings.");
   } finally {
     btn.disabled = false;
     btn.innerHTML = 'Sign the Petition <span class="sarr">&#8594;</span>';

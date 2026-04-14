@@ -644,11 +644,66 @@ var cio = new IntersectionObserver(function(entries) {
 }, {threshold:0.3});
 document.querySelectorAll(".cu").forEach(function(el){ cio.observe(el); });
 
-// ── SIGNATURE COUNT ──────────────────────────────────────────────────────────
-var sigs = [];
-try { sigs = JSON.parse(localStorage.getItem("gdd_s")||"[]"); } catch(e){}
-function upC() { document.getElementById("sigc").textContent = sigs.length; }
-upC();
+// ── SIGNATURE COUNT (SHARED ACROSS DEVICES) ─────────────────────────────────
+var sharedCount = 0;
+var recentSigs = [];
+
+// Paste your JSONBin credentials below.
+var BIN_ID = "69dea2b3aaba882197fc5ba9";
+var API_KEY = "$2a$10$ROKZ/Zt3dRA5eM/qPXJ.zeTmowHTeGmx5tSKfCKCPZWzx2NG3zz8G";
+
+function setCount(count) {
+  sharedCount = Number(count) || 0;
+  document.getElementById("sigc").textContent = sharedCount;
+}
+
+async function loadSharedCount() {
+  if (!BIN_ID || BIN_ID.indexOf("PASTE_YOUR") === 0 || !API_KEY || API_KEY.indexOf("PASTE_YOUR") === 0) {
+    console.warn("JSONBin is not configured yet. Add BIN_ID and API_KEY.");
+    setCount(0);
+    return;
+  }
+  try {
+    var res = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest", {
+      headers: { "X-Master-Key": API_KEY }
+    });
+    if (!res.ok) throw new Error("Failed to load shared count");
+    var data = await res.json();
+    setCount((data.record && data.record.count) || 0);
+  } catch (err) {
+    console.error("Count load failed:", err);
+    setCount(0);
+  }
+}
+
+async function incrementSharedCount() {
+  if (!BIN_ID || BIN_ID.indexOf("PASTE_YOUR") === 0 || !API_KEY || API_KEY.indexOf("PASTE_YOUR") === 0) {
+    throw new Error("JSONBin is not configured yet.");
+  }
+
+  var readRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest", {
+    headers: { "X-Master-Key": API_KEY }
+  });
+  if (!readRes.ok) throw new Error("Failed to read current count");
+
+  var readData = await readRes.json();
+  var nextCount = (((readData.record || {}).count) || 0) + 1;
+
+  var writeRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": API_KEY
+    },
+    body: JSON.stringify({ count: nextCount })
+  });
+  if (!writeRes.ok) throw new Error("Failed to update shared count");
+
+  setCount(nextCount);
+  return nextCount;
+}
+
+loadSharedCount();
 
 // ── PETITION FORM ────────────────────────────────────────────────────────────
 function tCB() {
@@ -668,7 +723,7 @@ document.querySelectorAll(".finp").forEach(function(inp) {
     var w = this.closest(".fwrap"); if(w) w.classList.remove("he");
   });
 });
-document.getElementById("pform").addEventListener("submit", function(e) {
+document.getElementById("pform").addEventListener("submit", async function(e) {
   e.preventDefault();
   var fn = document.getElementById("fn").value.trim();
   var ln = document.getElementById("ln").value.trim();
@@ -683,24 +738,29 @@ document.getElementById("pform").addEventListener("submit", function(e) {
   v = vF("ct","wct",ct.length>0) && v;
   if (!ck) { document.getElementById("cerr").style.display="block"; document.getElementById("wck").classList.add("he"); v=false; }
   if (!v) return;
+
   var btn = document.getElementById("sbtn");
   btn.textContent = "Submitting…"; btn.disabled = true;
-  sigs.push({fn:fn,ln:ln,em:em,ct:ct,ts:new Date().toISOString()});
-  try { localStorage.setItem("gdd_s",JSON.stringify(sigs)); } catch(x){}
-  upC();
-  // Show success overlay
-  setTimeout(function() {
+
+  try {
+    recentSigs.push({fn:fn,ln:ln,em:em,ct:ct,ts:new Date().toISOString()});
+    var newCount = await incrementSharedCount();
+
     document.getElementById("sucName").textContent = "Thank you, " + fn + "!";
-    document.getElementById("sucCount").textContent = sigs.length + " Georgian" + (sigs.length===1?"":"s") + " have now signed";
+    document.getElementById("sucCount").textContent = newCount + " Georgian" + (newCount===1?"":"s") + " have now signed";
     document.getElementById("sucOv").classList.add("op");
     document.body.style.overflow = "hidden";
     setTimeout(function(){ document.getElementById("sucCk").classList.add("dn"); }, 150);
-    // Reset form
+
     document.getElementById("pform").reset();
     document.getElementById("ccb").classList.remove("ck");
-    btn.textContent = "Sign the Petition"; btn.disabled = false;
+  } catch (err) {
+    console.error(err);
+    alert("The petition could not be submitted yet. Make sure your JSONBin BIN_ID and API_KEY are added correctly.");
+  } finally {
+    btn.disabled = false;
     btn.innerHTML = 'Sign the Petition <span class="sarr">&#8594;</span>';
-  }, 600);
+  }
 });
 function closeSuccess() {
   document.getElementById("sucOv").classList.remove("op");
@@ -873,9 +933,9 @@ document.addEventListener("keydown", function(e) {
 document.addEventListener("keydown", function(e) {
   if (e.ctrlKey && e.shiftKey && e.key === "D") {
     e.preventDefault();
-    if (!sigs.length) { alert("No signatures yet."); return; }
+    if (!recentSigs.length) { alert("No signatures from this browser session yet."); return; }
     var rows = [["First Name","Last Name","Email","City","Timestamp"]];
-    sigs.forEach(function(s){ rows.push([s.fn,s.ln,s.em,s.ct,s.ts]); });
+    recentSigs.forEach(function(s){ rows.push([s.fn,s.ln,s.em,s.ct,s.ts]); });
     var csv = rows.map(function(r){ return r.map(function(v){ return '"'+v+'"'; }).join(","); }).join("\n");
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));

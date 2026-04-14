@@ -648,7 +648,7 @@ document.querySelectorAll(".cu").forEach(function(el){ cio.observe(el); });
 var sharedCount = 0;
 var recentSigs = [];
 
-// Paste your JSONBin credentials below.
+// JSONBin credentials
 var BIN_ID = "69dea2b3aaba882197fc5ba9";
 var API_KEY = "$2a$10$ROKZ/Zt3dRA5eM/qPXJ.zeTmowHTeGmx5tSKfCKCPZWzx2NG3zz8G";
 
@@ -660,19 +660,28 @@ function setCount(count) {
 async function loadSharedCount() {
   if (!BIN_ID || BIN_ID.indexOf("PASTE_YOUR") === 0 || !API_KEY || API_KEY.indexOf("PASTE_YOUR") === 0) {
     console.warn("JSONBin is not configured yet. Add BIN_ID and API_KEY.");
-    setCount(0);
     return;
   }
+
   try {
-    var res = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest", {
-      headers: { "X-Master-Key": API_KEY }
+    var res = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest?t=" + Date.now(), {
+      method: "GET",
+      headers: {
+        "X-Master-Key": API_KEY,
+        "X-Bin-Meta": "false"
+      },
+      cache: "no-store"
     });
-    if (!res.ok) throw new Error("Failed to load shared count");
+
+    if (!res.ok) {
+      var msg = await res.text();
+      throw new Error("Failed to load shared count: " + res.status + " " + msg);
+    }
+
     var data = await res.json();
-    setCount((data.record && data.record.count) || 0);
+    setCount((data && data.count) || 0);
   } catch (err) {
     console.error("Count load failed:", err);
-    setCount(0);
   }
 }
 
@@ -681,13 +690,22 @@ async function incrementSharedCount() {
     throw new Error("JSONBin is not configured yet.");
   }
 
-  var readRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest", {
-    headers: { "X-Master-Key": API_KEY }
+  var readRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID + "/latest?t=" + Date.now(), {
+    method: "GET",
+    headers: {
+      "X-Master-Key": API_KEY,
+      "X-Bin-Meta": "false"
+    },
+    cache: "no-store"
   });
-  if (!readRes.ok) throw new Error("Failed to read current count");
+
+  if (!readRes.ok) {
+    var readMsg = await readRes.text();
+    throw new Error("Failed to read current count: " + readRes.status + " " + readMsg);
+  }
 
   var readData = await readRes.json();
-  var nextCount = (((readData.record || {}).count) || 0) + 1;
+  var nextCount = (Number(readData.count) || 0) + 1;
 
   var writeRes = await fetch("https://api.jsonbin.io/v3/b/" + BIN_ID, {
     method: "PUT",
@@ -697,7 +715,11 @@ async function incrementSharedCount() {
     },
     body: JSON.stringify({ count: nextCount })
   });
-  if (!writeRes.ok) throw new Error("Failed to update shared count");
+
+  if (!writeRes.ok) {
+    var writeMsg = await writeRes.text();
+    throw new Error("Failed to update shared count: " + writeRes.status + " " + writeMsg);
+  }
 
   setCount(nextCount);
   return nextCount;

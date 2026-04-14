@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Georgia Dream Denied</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0d1b2a;--navy2:#1a2f45;--red:#c0392b;--red2:#e74c3c;--gold:#d4a847;--white:#f8f6f1;--off:#f0f2f5;--gray:#8a9bb0;--green:#27ae60;--green2:#1e7e5a;--border:rgba(255,255,255,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+a{text-decoration:none;color:inherit;cursor:pointer}
+#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));z-index:9999;width:0%;transition:width 0.1s linear}
+nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.sc{background:rgba(13,27,42,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.85rem 3rem}
+.nl{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:900;color:var(--white);cursor:pointer}
+.nl span{color:var(--gold);font-style:italic}
+.nv{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nv a{color:rgba(255,255,255,0.6);font-size:0.73rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:color 0.2s;cursor:pointer}
+.nv a:hover{color:var(--white)}
+.ncta{background:var(--red)!important;color:#fff!important;padding:0.5rem 1.3rem!important;border-radius:2px}
+.ncta:hover{background:var(--red2)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:24px;height:2px;background:var(--white)}
+.mm{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;list-style:none}
+.mm.op{display:flex}
+.mm a{color:var(--white);font-size:1.4rem;font-family:"Fraunces",serif;font-weight:700;cursor:pointer}
+.mc2{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 3rem 5rem}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse at 15% 50%,rgba(192,57,43,0.18) 0%,transparent 55%),radial-gradient(ellipse at 85% 20%,rgba(212,168,71,0.12) 0%,transparent 50%)}
+.hgr{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px}
+.hc{max-width:920px;text-align:center;position:relative;z-index:2}
+.hbadge{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;border:1px solid rgba(212,168,71,0.3);padding:0.45rem 1.2rem;border-radius:2px;margin-bottom:2.5rem;opacity:0;animation:fup 0.8s ease 0.2s forwards}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pd 2s infinite}
+@keyframes pd{0%,100%{opacity:1}50%{opacity:0.4}}
+.ht{font-family:"Fraunces",serif;font-size:clamp(3rem,7.5vw,6.5rem);font-weight:900;line-height:1.05;color:var(--white);margin-bottom:2rem;opacity:0;animation:fup 1s ease 0.4s forwards}
+.gi{color:var(--gold);font-style:italic}
+.hs{font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,0.55);line-height:1.85;max-width:660px;margin:0 auto 3rem;font-weight:300;opacity:0;animation:fup 1s ease 0.6s forwards}
+.hs strong{color:rgba(255,255,255,0.85);font-weight:400}
+.hbt{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fup 1s ease 0.8s forwards}
+.bp{background:var(--red);color:#fff;padding:1rem 2.8rem;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;transition:all 0.25s}
+.bp:hover{background:var(--red2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(192,57,43,0.4)}
+.bo{background:transparent;color:var(--white);padding:1rem 2.8rem;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);cursor:pointer;border-radius:2px;transition:all 0.25s}
+.bo:hover{border-color:var(--white);transform:translateY(-3px)}
+.hscr{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.6rem;opacity:0;animation:fin 1s ease 1.4s forwards;cursor:pointer}
+.hscr span{color:var(--gray);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase}
+.sl{width:1px;height:48px;background:linear-gradient(var(--gray),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+#stats{background:var(--white);border-bottom:1px solid rgba(13,27,42,0.07)}
+.si{display:grid;grid-template-columns:repeat(3,1fr);max-width:1080px;margin:0 auto}
+.sti{padding:3.5rem 2rem;text-align:center;border-right:1px solid rgba(13,27,42,0.07);position:relative}
+.sti:last-child{border-right:none}
+.stb{position:absolute;bottom:0;left:10%;right:10%;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.9s ease}
+.sti.rd .stb{transform:scaleX(1)}
+.stn{font-family:"Fraunces",serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--navy);line-height:1;margin-bottom:0.75rem}
+.stn .r{color:var(--red)}
+.stl{font-size:0.82rem;color:#777;line-height:1.7;max-width:180px;margin:0 auto;font-weight:300}
+.wrap{max-width:1100px;margin:0 auto}
+section{padding:7rem 3rem}
+.tag{display:inline-block;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:1rem}
+.ttl{font-family:"Fraunces",serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.15;color:var(--navy);margin-bottom:1.5rem}
+.sub{font-size:0.98rem;color:#666;line-height:1.9;font-weight:300;max-width:580px}
+.rv{opacity:0;transform:translateY(40px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.rv.v{opacity:1;transform:translateY(0)}
+.rvl{opacity:0;transform:translateX(-40px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.rvl.v{opacity:1;transform:translateX(0)}
+.rvr{opacity:0;transform:translateX(40px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.rvr.v{opacity:1;transform:translateX(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}.d5{transition-delay:0.5s}
+#issue{background:var(--white)}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.it p{font-size:0.97rem;color:#444;line-height:1.95;margin-bottom:1.3rem;font-weight:300}
+.it p strong{font-weight:500;color:var(--navy)}
+.lp{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:2rem}
+.lpi{background:var(--navy);color:var(--white);font-size:0.73rem;padding:0.45rem 1rem;border-radius:2px;font-weight:500;letter-spacing:0.05em}
+.fw{display:flex;flex-direction:column}
+.fs2{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid rgba(13,27,42,0.06);opacity:0;transform:translateX(30px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.fs2.v{opacity:1;transform:translateX(0)}
+.fs2:last-child{border-bottom:none}
+.fi2{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fi2 svg{width:20px;height:20px}
+.fb h4{font-size:0.92rem;font-weight:500;color:var(--navy);margin-bottom:0.3rem}
+.fb p{font-size:0.8rem;color:#777;line-height:1.65;font-weight:300}
+#compare{background:var(--off)}
+.cph{text-align:center;margin-bottom:4rem}
+.cph .sub{margin:0 auto}
+.cpg{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cpc{background:var(--white);border-radius:3px;padding:2.5rem}
+.cpc.bad{border-top:4px solid var(--red)}
+.cpc.good{border-top:4px solid var(--green)}
+.cbd{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;display:inline-block;margin-bottom:1.2rem}
+.cbd.r{background:rgba(192,57,43,0.1);color:var(--red)}
+.cbd.g{background:rgba(39,174,96,0.1);color:var(--green2)}
+.cpc h3{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:700;margin-bottom:1.5rem;line-height:1.3}
+.cl{list-style:none}
+.cl li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.87rem;color:#555;padding:0.65rem 0;border-bottom:1px solid rgba(13,27,42,0.05);line-height:1.6;font-weight:300}
+.cl li:last-child{border-bottom:none}
+.cd{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.dr{background:rgba(192,57,43,0.12);color:var(--red)}
+.dg{background:rgba(39,174,96,0.12);color:var(--green)}
+.cq{text-align:center;margin-top:3.5rem;font-family:"Fraunces",serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;color:var(--navy);font-weight:300;line-height:1.6;padding:2rem 3rem;border-top:1px solid rgba(13,27,42,0.1);border-bottom:1px solid rgba(13,27,42,0.1)}
+#story{background:var(--navy);position:relative;overflow:hidden}
+#story::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(212,168,71,0.08) 0%,transparent 55%)}
+.st{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.sqm{font-family:"Fraunces",serif;font-size:8rem;line-height:0.6;color:var(--gold);opacity:0.25;margin-bottom:1.5rem;display:block;font-weight:900}
+.stxt{font-family:"Fraunces",serif;font-size:clamp(1.3rem,3vw,2rem);font-style:italic;color:var(--white);line-height:1.7;font-weight:300;margin-bottom:2.5rem}
+.sdv{width:80px;height:1px;background:var(--gold);margin:0 auto 2rem;opacity:0.5}
+.ssb{font-size:1rem;color:var(--gray);line-height:1.8;font-weight:300}
+.ssb strong{color:rgba(255,255,255,0.8);font-weight:400}
+#petition{background:var(--white);position:relative;overflow:hidden}
+#petition::before{content:"";position:absolute;inset:0;background-image:linear-gradient(135deg,transparent 25%,rgba(13,27,42,0.015) 25%,rgba(13,27,42,0.015) 50%,transparent 50%,transparent 75%,rgba(13,27,42,0.015) 75%);background-size:20px 20px}
+.pg{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;position:relative;z-index:2}
+.ptag{font-family:"Fraunces",serif;font-style:italic;font-size:1.1rem;color:var(--gold);font-weight:300;margin-bottom:1.5rem}
+.pdesc{font-size:0.9rem;color:#555;line-height:1.9;font-weight:300;margin-bottom:2rem}
+.pdv{width:50px;height:2px;background:var(--red);margin-bottom:2rem}
+.cn{font-family:"Fraunces",serif;font-size:4rem;font-weight:900;color:var(--gold);line-height:1}
+.cl2{font-size:0.82rem;color:#888;font-weight:300;margin-top:0.4rem}
+.tl{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
+.ti{display:flex;align-items:center;gap:0.75rem;font-size:0.83rem;color:#555;font-weight:300}
+.tc{width:20px;height:20px;border-radius:50%;background:rgba(39,174,96,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tc svg{width:10px;height:10px;stroke:var(--green)}
+.fcard{background:var(--white);border-radius:3px;border-top:4px solid var(--red);padding:2.5rem;box-shadow:0 4px 40px rgba(13,27,42,0.08)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fwrap{margin-bottom:1rem;position:relative}
+.flbl{display:block;font-size:0.75rem;font-weight:500;color:var(--navy);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem}
+.finp{width:100%;padding:0.85rem 1rem;background:#f5f4f0;border:1px solid rgba(13,27,42,0.12);border-radius:2px;font-family:"DM Sans",sans-serif;font-size:0.92rem;color:var(--navy);font-weight:300;transition:all 0.2s;outline:none;border-left:3px solid transparent}
+.finp:focus{background:var(--white);border-color:rgba(13,27,42,0.3);border-left-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,0.06)}
+.finp.er{border-color:var(--red);border-left-color:var(--red);animation:shk 0.4s ease}
+@keyframes shk{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.ferr{font-size:0.72rem;color:var(--red);margin-top:0.35rem;display:none}
+.fwrap.he .ferr{display:block}
+.cbw{display:flex;align-items:flex-start;gap:0.9rem;padding:1.2rem;background:#f5f4f0;border-radius:2px;border:1px solid rgba(13,27,42,0.08);margin-bottom:1.5rem;cursor:pointer;transition:background 0.2s}
+.cbw:hover{background:#eeecea}
+.ccb{width:22px;height:22px;border-radius:2px;border:2px solid rgba(13,27,42,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.ccb.ck{background:var(--red);border-color:var(--red)}
+.ccb svg{width:12px;height:12px;stroke:#fff;opacity:0;transform:scale(0);transition:all 0.2s}
+.ccb.ck svg{opacity:1;transform:scale(1)}
+#rck{display:none}
+.cbl{font-size:0.87rem;color:#444;line-height:1.65;font-weight:300}
+.cbl strong{font-weight:500;color:var(--navy)}
+.sbtn{width:100%;padding:1.1rem;background:var(--red);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.sbtn:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(192,57,43,0.35)}
+.sarr{transition:transform 0.2s}
+.sbtn:hover .sarr{transform:translateX(5px)}
+.pnote{font-size:0.73rem;color:#aaa;line-height:1.7;margin-top:1rem;font-style:italic}
+#action{background:var(--off)}
+.ach{text-align:center;margin-bottom:4rem}
+.ach .sub{margin:0 auto}
+.acg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.ac{background:var(--white);padding:2rem 1.5rem;border-radius:3px;border-bottom:3px solid transparent;transition:all 0.3s;cursor:pointer;display:block;color:inherit}
+.ac:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(13,27,42,0.1);border-bottom-color:var(--red)}
+.an{font-family:"Fraunces",serif;font-size:2.5rem;font-weight:900;color:rgba(13,27,42,0.08);line-height:1;margin-bottom:1rem;transition:color 0.3s}
+.ac:hover .an{color:rgba(192,57,43,0.15)}
+.ai{width:44px;height:44px;border-radius:50%;background:rgba(13,27,42,0.06);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:background 0.3s}
+.ac:hover .ai{background:rgba(192,57,43,0.1)}
+.ai svg{width:20px;height:20px;stroke:var(--navy);transition:stroke 0.3s}
+.ac:hover .ai svg{stroke:var(--red)}
+.at{font-size:0.97rem;font-weight:500;color:var(--navy);margin-bottom:0.5rem}
+.ad{font-size:0.8rem;color:#777;line-height:1.65;font-weight:300;margin-bottom:1.2rem}
+.al{font-size:0.75rem;color:var(--red);font-weight:500;letter-spacing:0.05em;display:flex;align-items:center;gap:0.3rem}
+.aarr{transition:transform 0.2s}
+.ac:hover .aarr{transform:translateX(4px)}
+#scorecard{background:var(--white)}
+.scg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.scc{border:1px solid rgba(13,27,42,0.08);border-radius:3px;padding:1.75rem 1.5rem;transition:all 0.3s;cursor:pointer}
+.scc:hover{box-shadow:0 6px 28px rgba(13,27,42,0.12);border-color:rgba(13,27,42,0.18);transform:translateY(-4px)}
+.scn{font-size:0.97rem;font-weight:500;color:var(--navy);margin-bottom:0.25rem}
+.sct{font-size:0.78rem;color:#888;margin-bottom:1.25rem;font-weight:300;line-height:1.5}
+.scb{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:2px;background:rgba(212,168,71,0.12);color:#8a6a10;margin-bottom:1.25rem}
+.bp2{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bpl 2s infinite}
+@keyframes bpl{0%,100%{opacity:1}50%{opacity:0.4}}
+.scbtn{display:block;width:100%;padding:0.6rem;background:var(--navy);color:var(--white);font-family:"DM Sans",sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;text-align:center;border-radius:2px;transition:all 0.2s;border:none;cursor:pointer}
+.scc:hover .scbtn{background:var(--red)}
+#blog{background:var(--navy);position:relative;overflow:hidden}
+#blog::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(212,168,71,0.06) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(192,57,43,0.06) 0%,transparent 50%)}
+.blin{position:relative;z-index:2}
+.bh{text-align:center;margin-bottom:4rem}
+.bh .ttl{color:var(--white)}
+.bh .sub{color:var(--gray);margin:0 auto}
+.bh .tag{color:var(--gold)}
+.bg{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.bc{background:var(--navy2);overflow:hidden;transition:all 0.4s;cursor:pointer;position:relative}
+.bc:hover{z-index:2;transform:scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.biw{overflow:hidden;position:relative;height:240px}
+.bi{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s;filter:brightness(0.7)}
+.bc:hover .bi{transform:scale(1.08);filter:brightness(0.5)}
+.bcat{position:absolute;top:1rem;left:1rem;background:var(--red);color:#fff;font-size:0.63rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:2px;z-index:2}
+.bb{padding:1.75rem}
+.bm{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.9rem}
+.bdate{font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:300}
+.bdot2{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.2)}
+.bauth{font-size:0.72rem;color:var(--gold);font-weight:500}
+.btit{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.85rem}
+.bexc{font-size:0.83rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.brd{font-size:0.73rem;color:var(--gold);font-weight:500;letter-spacing:0.05em;display:flex;align-items:center;gap:0.35rem;transition:gap 0.2s}
+.bc:hover .brd{gap:0.65rem}
+/* ── SHARED OVERLAY / MODAL ── */
+.ov{display:none;position:fixed;inset:0;z-index:2000;background:rgba(13,27,42,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:2rem 1.5rem}
+.ov.op{display:block}
+.omd{max-width:800px;margin:0 auto;background:var(--white);border-radius:3px;overflow:hidden;position:relative;animation:min 0.4s cubic-bezier(0.16,1,0.3,1)}
+@keyframes min{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+.mcl{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:rgba(13,27,42,0.08);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--navy);z-index:10;transition:all 0.2s}
+.mcl:hover{background:var(--red);color:#fff}
+.mhi{width:100%;height:300px;object-fit:cover;display:block}
+.mcon{padding:2.5rem}
+.mcat{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:0.75rem;display:block}
+.mttl{font-family:"Fraunces",serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:1rem}
+.mmeta{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(13,27,42,0.08)}
+.mau{display:flex;align-items:center;gap:0.65rem}
+.mav{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0}
+.mai .mn{font-size:0.83rem;font-weight:500;color:var(--navy)}
+.mai .mr{font-size:0.73rem;color:#888;font-weight:300}
+.mdt{font-size:0.78rem;color:#aaa;font-weight:300}
+.mbdy p{font-size:0.97rem;color:#444;line-height:1.95;margin-bottom:1.3rem;font-weight:300}
+.mbdy p strong{font-weight:500;color:var(--navy)}
+.mbdy h3{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin:2rem 0 0.75rem}
+.mbdy blockquote{border-left:3px solid var(--gold);padding:0.75rem 1.25rem;background:#faf9f5;margin:1.5rem 0;font-style:italic;color:#555;font-size:0.95rem;line-height:1.8}
+.mbdy .pimg{width:100%;height:240px;object-fit:cover;border-radius:3px;margin:1.5rem 0;display:block;background:#e8e8e8}
+.msrc{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(13,27,42,0.08)}
+.msrc h4{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#bbb;margin-bottom:0.75rem}
+.srcl{display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;font-size:0.78rem}
+.srcn{color:var(--red);font-weight:700;flex-shrink:0}
+.srcl a{color:#666;text-decoration:underline;line-height:1.5;font-weight:300}
+.srcl a:hover{color:var(--red)}
+#resources{background:var(--off)}
+.rh{text-align:center;margin-bottom:3.5rem}
+.rh .sub{margin:0 auto}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rc{background:var(--white);padding:2rem;border-radius:3px;border-left:3px solid var(--navy);transition:all 0.3s;display:block;color:inherit}
+.rc:hover{border-left-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 30px rgba(13,27,42,0.08)}
+.rn{font-family:"Fraunces",serif;font-size:2rem;font-weight:900;color:rgba(13,27,42,0.07);line-height:1;margin-bottom:0.75rem}
+.rt{font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:0.5rem}
+.rd2{font-size:0.82rem;color:#777;line-height:1.7;font-weight:300;margin-bottom:1rem}
+.rl{font-size:0.75rem;color:var(--red);font-weight:500;display:flex;align-items:center;gap:0.3rem}
+footer{background:var(--navy);padding:6rem 3rem 3rem;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,168,71,0.06) 0%,transparent 55%)}
+.fi{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.fq{font-family:"Fraunces",serif;font-size:clamp(1.5rem,3.5vw,2.5rem);font-style:italic;color:var(--gold);font-weight:300;line-height:1.5;margin-bottom:3rem}
+.fdv{width:60px;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 2rem}
+.fn{font-size:0.82rem;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;font-weight:300}
+.fs3{font-size:0.7rem;color:rgba(255,255,255,0.3);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.btop{display:inline-block;padding:0.65rem 1.5rem;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;background:none}
+.btop:hover{border-color:var(--white);color:var(--white)}
+/* ── SUCCESS OVERLAY ── */
+#sucOv{display:none;position:fixed;inset:0;z-index:3000;background:rgba(13,27,42,0.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:1.5rem}
+#sucOv.op{display:flex}
+.suc-box{background:#fff;border-radius:6px;padding:3rem 2.5rem;max-width:460px;width:100%;text-align:center;border-top:5px solid var(--green);box-shadow:0 24px 80px rgba(0,0,0,0.35);animation:min 0.4s cubic-bezier(0.16,1,0.3,1)}
+.suc-ico{width:80px;height:80px;border-radius:50%;background:rgba(39,174,96,0.1);border:2px solid rgba(39,174,96,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.suc-ck{stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 0.9s ease 0.15s}
+.suc-ck.dn{stroke-dashoffset:0}
+.suc-box h3{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:900;color:var(--navy);margin-bottom:0.6rem}
+.suc-box p{font-size:0.9rem;color:#666;line-height:1.8;margin-bottom:0.5rem;font-weight:300}
+.suc-box .sig-ct{font-family:"Fraunces",serif;font-size:1rem;color:var(--green);font-weight:700;margin-bottom:1.75rem}
+.suc-sh{display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem}
+.suc-sh button{padding:0.6rem 1.3rem;font-family:"DM Sans",sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;border-radius:2px;cursor:pointer;border:none;transition:all 0.2s}
+.sh-x{background:var(--navy);color:#fff}.sh-x:hover{background:var(--navy2)}
+.sh-fb{background:#1877f2;color:#fff}.sh-fb:hover{background:#1565d8}
+.suc-close{background:none;border:1px solid rgba(13,27,42,0.18);padding:0.5rem 1.5rem;border-radius:2px;cursor:pointer;font-size:0.8rem;color:#888;transition:all 0.2s;font-family:"DM Sans",sans-serif}
+.suc-close:hover{border-color:var(--navy);color:var(--navy)}
+/* ── AJC MODAL ── */
+#ajcMo .omd{max-width:640px}
+.ajc-letter{width:100%;padding:1rem;background:#f7f6f2;border:1px solid rgba(13,27,42,0.12);border-radius:2px;font-family:"DM Sans",sans-serif;font-size:0.86rem;color:#444;line-height:1.85;resize:none;height:260px;outline:none;font-weight:300}
+.ajc-email{font-size:0.82rem;background:rgba(13,27,42,0.04);border:1px solid rgba(13,27,42,0.1);border-radius:2px;padding:0.65rem 1rem;margin-bottom:1rem;color:#555;font-weight:300}
+.ajc-email strong{color:var(--navy);font-weight:600}
+.ajc-btns{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.85rem}
+.ajc-copy{padding:0.75rem 1.6rem;background:var(--navy);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all 0.2s}
+.ajc-copy:hover{background:var(--navy2)}
+.ajc-open{padding:0.75rem 1.6rem;background:var(--red);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all 0.2s}
+.ajc-open:hover{background:var(--red2)}
+/* ── SHARE MODAL ── */
+#shareMo .omd{max-width:500px}
+.sh-url-row{display:flex;gap:0.5rem;margin-bottom:1.25rem}
+.sh-url-inp{flex:1;padding:0.75rem 1rem;background:#f5f4f0;border:1px solid rgba(13,27,42,0.15);border-radius:2px;font-family:"DM Sans",sans-serif;font-size:0.82rem;color:#555;outline:none;font-weight:300}
+.sh-url-btn{padding:0.75rem 1.2rem;background:var(--navy);color:#fff;border:none;border-radius:2px;cursor:pointer;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;transition:all 0.2s;min-width:110px}
+.sh-url-btn:hover{background:var(--navy2)}
+.sh-divider{text-align:center;font-size:0.72rem;color:#bbb;letter-spacing:0.12em;text-transform:uppercase;margin:1rem 0;position:relative}
+.sh-divider::before,.sh-divider::after{content:"";position:absolute;top:50%;width:40%;height:1px;background:rgba(13,27,42,0.1)}
+.sh-divider::before{left:0}.sh-divider::after{right:0}
+.sh-opts{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.sh-opt{padding:0.85rem;border-radius:2px;cursor:pointer;border:none;font-family:"DM Sans",sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}nav.sc{padding:0.8rem 1.5rem}.nv{display:none}.hb{display:flex}
+  section{padding:5rem 1.5rem}
+  .ig,.cpg,.pg,.bg{grid-template-columns:1fr;gap:3rem}
+  .rg{grid-template-columns:1fr}.si{grid-template-columns:1fr}
+  .sti{border-right:none;border-bottom:1px solid rgba(13,27,42,0.07);padding:2.5rem 1.5rem}
+  .sti:last-child{border-bottom:none}
+  .frow{grid-template-columns:1fr}.acg{grid-template-columns:1fr 1fr}.scg{grid-template-columns:1fr 1fr}
+  .mhi{height:200px}.mcon{padding:1.5rem}.biw{height:200px}
+  .suc-box{padding:2rem 1.5rem}
+}
+@media(max-width:560px){.acg,.scg{grid-template-columns:1fr}.sh-opts{grid-template-columns:1fr}}
+@keyframes fup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fin{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<div id="pb"></div>
+<nav id="nav">
+  <div class="nl" onclick="goTo('hero')">Georgia <span>Dream Denied</span></div>
+  <ul class="nv">
+    <li><a onclick="goTo('issue')">The Issue</a></li>
+    <li><a onclick="goTo('compare')">Compare</a></li>
+    <li><a onclick="goTo('blog')">Blog</a></li>
+    <li><a onclick="goTo('action')">Take Action</a></li>
+    <li><a onclick="goTo('petition')" class="ncta">Sign Petition</a></li>
+  </ul>
+  <div class="hb" id="hb"><span></span><span></span><span></span></div>
+</nav>
+<ul class="mm" id="mm">
+  <button class="mc2" id="mc2">&#10005;</button>
+  <li><a onclick="goTo('issue')">The Issue</a></li>
+  <li><a onclick="goTo('compare')">Compare</a></li>
+  <li><a onclick="goTo('blog')">Blog</a></li>
+  <li><a onclick="goTo('petition')">Sign Petition</a></li>
+  <li><a onclick="goTo('action')">Take Action</a></li>
+</ul>
+
+<section id="hero">
+  <div class="hbg"></div><div class="hgr"></div>
+  <div class="hc">
+    <div class="hbadge"><div class="bdot"></div>Georgia State University &middot; Perimeter College &middot; Spring 2026</div>
+    <h1 class="ht">Georgia Is<br><span class="gi">Turning Away</span><br>Its Own Students</h1>
+    <p class="hs"><strong>13,000 Georgians.</strong> Raised here. Schooled here for 13 years.<br>Priced out of college &mdash; by their own state.</p>
+    <div class="hbt">
+      <button class="bp" onclick="goTo('petition')">Sign the Petition</button>
+      <button class="bo" onclick="goTo('issue')">Learn More</button>
+    </div>
+  </div>
+  <div class="hscr" onclick="goTo('stats')"><span>Scroll</span><div class="sl"></div></div>
+</section>
+
+<div id="stats">
+  <div class="si">
+    <div class="sti"><div class="stn"><span class="cu r" data-t="4" data-s="&times;">0</span></div><p class="stl">Higher tuition than classmates for the same Georgia education</p><div class="stb"></div></div>
+    <div class="sti"><div class="stn"><span class="cu" data-t="13000" data-s="">0</span></div><p class="stl">Young Georgians affected by this policy right now</p><div class="stb"></div></div>
+    <div class="sti"><div class="stn"><span class="r">$</span><span class="cu" data-t="0" data-s="">0</span></div><p class="stl">State financial aid available, regardless of grades or need</p><div class="stb"></div></div>
+  </div>
+</div>
+
+<section id="issue">
+  <div class="wrap ig">
+    <div class="rvl">
+      <span class="tag">The Policy</span>
+      <h2 class="ttl">What Is Happening In Georgia?</h2>
+      <div class="it">
+        <p>Under <strong>Georgia Senate Bill 492</strong>, signed in 2008, undocumented students &mdash; including DACA recipients raised entirely in this state &mdash; are required to pay out-of-state tuition rates <strong>three to four times higher</strong> than their classmates, for the exact same Georgia education.</p>
+        <p><strong>Board of Regents Policy 4.1.6</strong>, passed in 2010, completely bans undocumented students from enrolling at Georgia's most prestigious public universities, including the University of Georgia and Georgia Tech. They cannot even apply.</p>
+        <p>On top of this, these students are <strong>denied all state financial aid</strong>, regardless of their academic achievement or how long they have lived in Georgia.</p>
+      </div>
+      <div class="lp"><span class="lpi">SB 492 &middot; 2008</span><span class="lpi">Policy 4.1.6 &middot; 2010</span><span class="lpi">Policy 4.3.4</span></div>
+    </div>
+    <div class="rvr">
+      <div class="fw">
+        <div class="fs2"><div class="fi2" style="background:rgba(13,27,42,0.07)"><svg fill="none" viewBox="0 0 24 24" stroke="#0d1b2a" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M3 21c0-5 4-9 9-9s9 4 9 9"/></svg></div><div class="fb"><h4>Student grows up in Georgia</h4><p>Born or brought here as a young child. This is the only home they have ever known.</p></div></div>
+        <div class="fs2"><div class="fi2" style="background:rgba(39,174,96,0.1)"><svg fill="none" viewBox="0 0 24 24" stroke="#27ae60" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><div class="fb"><h4>13 years in Georgia public schools</h4><p>Attends kindergarten through twelfth grade alongside documented peers, every single year.</p></div></div>
+        <div class="fs2"><div class="fi2" style="background:rgba(13,27,42,0.07)"><svg fill="none" viewBox="0 0 24 24" stroke="#0d1b2a" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="fb"><h4>Graduates from Georgia high school</h4><p>Earns their diploma with the same standards as every other Georgia graduate.</p></div></div>
+        <div class="fs2"><div class="fi2" style="background:rgba(192,57,43,0.1)"><svg fill="none" viewBox="0 0 24 24" stroke="#c0392b" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div class="fb"><h4 style="color:var(--red)">Forced to pay 3&ndash;4&times; tuition &middot; Zero aid</h4><p>Under SB 492 and Policy 4.1.6, the financial wall becomes insurmountable for most families.</p></div></div>
+        <div class="fs2"><div class="fi2" style="background:rgba(13,27,42,0.85)"><svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><div class="fb"><h4>Leaves Georgia &mdash; rarely returns</h4><p>Georgia loses the talent it spent 13 years developing. The investment walks out the door.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="cph rv"><span class="tag">The Comparison</span><h2 class="ttl">Georgia Is Being Left Behind</h2><p class="sub">Twenty-four states &mdash; including deeply conservative ones &mdash; have already fixed this. Georgia remains one of the harshest in the nation.</p></div>
+    <div class="cpg">
+      <div class="cpc bad rv d1"><span class="cbd r">Georgia &mdash; Current Policy</span><h3>One of the harshest policies in America</h3><ul class="cl"><li><div class="cd dr">&#10005;</div>Out-of-state tuition &mdash; 3 to 4 times higher</li><li><div class="cd dr">&#10005;</div>Zero state financial aid regardless of grades or need</li><li><div class="cd dr">&#10005;</div>Banned from UGA and Georgia Tech entirely</li><li><div class="cd dr">&#10005;</div>One of only 3 states with full enrollment bans</li><li><div class="cd dr">&#10005;</div>Students who leave rarely return</li></ul></div>
+      <div class="cpc good rv d2"><span class="cbd g">24 Other States &mdash; Oklahoma, Utah &amp; Kansas</span><h3>Bipartisan, common-sense tuition equity</h3><ul class="cl"><li><div class="cd dg">&#10003;</div>In-state tuition for resident high school graduates</li><li><div class="cd dg">&#10003;</div>Based on graduating from an in-state high school</li><li><div class="cd dg">&#10003;</div>Conservative and liberal states alike support this</li><li><div class="cd dg">&#10003;</div>Texas passed this under GOP Gov. Rick Perry in 2001</li><li><div class="cd dg">&#10003;</div>Students stay, build careers, and pay taxes here</li></ul></div>
+    </div>
+    <p class="cq rv">"Georgia is not protecting its citizens. It is pushing them away."</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="st rv">
+    <span class="sqm">"</span>
+    <p class="stxt">Rafael Aragon grew up in Georgia. He moved to Connecticut for college because Georgia's out-of-state tuition was unaffordable. His engineering and computer science classmates &mdash; who also grew up in Georgia &mdash; never came back. Georgia spent 13 years educating them and handed their futures to another state.</p>
+    <div class="sdv"></div>
+    <p class="ssb">This is not one story. This is happening to <strong>13,000 Georgians</strong> right now.</p>
+  </div>
+</section>
+
+<section id="petition">
+  <div class="wrap pg">
+    <div class="rvl">
+      <span class="tag">Add Your Voice</span>
+      <h2 class="ttl">Sign the Petition</h2>
+      <p class="ptag">Make Georgia choose its students back.</p>
+      <p class="pdesc">Your signature will be compiled and submitted directly to Georgia state legislators &mdash; Derrick Jackson, RaShaun Kemp, Jon Ossoff, Raphael Warnock, and Lucy McBath &mdash; as documented constituent evidence demanding tuition equity reform.</p>
+      <div class="pdv"></div>
+      <div style="margin-bottom:1.5rem"><div class="cn" id="sigc">0</div><div class="cl2">Georgians have signed this petition</div></div>
+      <ul class="tl">
+        <li class="ti"><div class="tc"><svg fill="none" viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></div>Your data is never sold or shared</li>
+        <li class="ti"><div class="tc"><svg fill="none" viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></div>Signatures forwarded directly to legislators</li>
+        <li class="ti"><div class="tc"><svg fill="none" viewBox="0 0 12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></div>Part of a real civic advocacy campaign</li>
+      </ul>
+    </div>
+    <div class="rvr">
+      <div class="fcard">
+        <form id="pform" novalidate>
+          <div class="frow">
+            <div class="fwrap" id="wfn"><label class="flbl">First Name</label><input class="finp" type="text" id="fn" placeholder="Your first name"><span class="ferr">Please enter your first name</span></div>
+            <div class="fwrap" id="wln"><label class="flbl">Last Name</label><input class="finp" type="text" id="ln" placeholder="Your last name"><span class="ferr">Please enter your last name</span></div>
+          </div>
+          <div class="fwrap" id="wem"><label class="flbl">Email Address</label><input class="finp" type="email" id="em" placeholder="your@email.com"><span class="ferr">Please enter a valid email</span></div>
+          <div class="fwrap" id="wct"><label class="flbl">Georgia City or County</label><input class="finp" type="text" id="ct" placeholder="e.g. Atlanta, Clarkston, Decatur..."><span class="ferr">Please enter your city or county</span></div>
+          <div class="fwrap" id="wck">
+            <div class="cbw" onclick="tCB()">
+              <div class="ccb" id="ccb"><svg fill="none" viewBox="0 0 14 14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,7 6,11 12,3"/></svg></div>
+              <input type="checkbox" id="rck">
+              <label class="cbl">I support <strong>in-state tuition equity</strong> for undocumented Georgia high school graduates</label>
+            </div>
+            <span class="ferr" id="cerr" style="display:none">Please check this box to sign the petition</span>
+          </div>
+          <button type="submit" class="sbtn" id="sbtn">Sign the Petition <span class="sarr">&#8594;</span></button>
+          <p class="pnote">Your information will only be used to submit this petition to Georgia state legislators and will never be sold or shared.</p>
+        </form>
+      </div>
+      <p style="font-size:0.7rem;color:#bbb;margin-top:0.75rem;font-style:italic;text-align:center">Press Ctrl+Shift+D anywhere to download all signatures as CSV</p>
+    </div>
+  </div>
+</section>
+
+<section id="action">
+  <div class="wrap">
+    <div class="ach rv"><span class="tag">Make A Difference</span><h2 class="ttl">Five Ways to Act Right Now</h2><p class="sub">Pick one. Do it in the next five minutes. Every action counts.</p></div>
+    <div class="acg">
+      <div class="ac rv d1" onclick="window.open('https://openstates.org','_blank')"><div class="an">01</div><div class="ai"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div class="at">Email Your Rep</div><div class="ad">Find your Georgia rep and send a message in under 2 minutes.</div><div class="al">Find My Rep <span class="aarr">&#8594;</span></div></div>
+      <div class="ac rv d2" onclick="window.open('https://freedom-university.org/contact','_blank')"><div class="an">02</div><div class="ai"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4a4 4 0 10-8 0 4 4 0 008 0z"/></svg></div><div class="at">Contact Freedom University</div><div class="ad">Support Atlanta's advocacy org fighting for undocumented students.</div><div class="al">Contact Them <span class="aarr">&#8594;</span></div></div>
+      <!-- AJC block — opens the letter modal -->
+      <div class="ac rv d3" onclick="openAJC()"><div class="an">03</div><div class="ai"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></div><div class="at">Write to the AJC</div><div class="ad">Open a pre-written letter to the editor &mdash; copy and send in seconds.</div><div class="al">Open Letter <span class="aarr">&#8594;</span></div></div>
+      <div class="ac rv d4" onclick="goTo('petition')"><div class="an">04</div><div class="ai"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div><div class="at">Sign the Petition</div><div class="ad">Add your name &mdash; submitted directly to your Georgia legislators.</div><div class="al">Sign Now <span class="aarr">&#8594;</span></div></div>
+      <!-- Share block — opens the share modal -->
+      <div class="ac rv d5" onclick="openShare()"><div class="an">05</div><div class="ai"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg></div><div class="at">Share This Page</div><div class="ad">Send this website to someone who does not know this is happening.</div><div class="al">Share Now <span class="aarr">&#8594;</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="scorecard">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:3.5rem"><span class="tag">Your Representatives</span><h2 class="ttl">Have They Responded?</h2><p class="sub">These officials have the power to change this. They have been contacted. Click any card to view their full legislative record.</p></div>
+    <div class="scg">
+      <div class="scc rv d1" onclick="window.open('https://pluralpolicy.com/app/person/9046fcb2-f3eb-4233-bd92-32c94e60f9df','_blank')"><div class="scn">Derrick Jackson</div><div class="sct">State Representative &middot; District 68<br>Georgia House</div><div class="scb"><div class="bp2"></div>Contacted &mdash; Awaiting Response</div><button class="scbtn">View Legislative Record &#8594;</button></div>
+      <div class="scc rv d2" onclick="window.open('https://pluralpolicy.com/app/person/069fb4fa-766b-40e4-90b7-ce96b4fa2ace/bills-sponsored?jurisdictions=ga&page=1','_blank')"><div class="scn">RaShaun Kemp</div><div class="sct">State Senator &middot; District 38<br>Georgia Senate</div><div class="scb"><div class="bp2"></div>Contacted &mdash; Awaiting Response</div><button class="scbtn">View Legislative Record &#8594;</button></div>
+      <div class="scc rv d3" onclick="window.open('https://pluralpolicy.com/app/person/4e48da38-17ab-5580-bced-2ea00b9b2843/bills-sponsored?jurisdictions=usa&page=1','_blank')"><div class="scn">Jon Ossoff</div><div class="sct">U.S. Senator &middot; Georgia<br>United States Senate</div><div class="scb"><div class="bp2"></div>Contacted &mdash; Awaiting Response</div><button class="scbtn">View Legislative Record &#8594;</button></div>
+      <div class="scc rv d4" onclick="window.open('https://pluralpolicy.com/app/person/37f5a4b9-98b2-5c3d-857b-6e02f5123345/bills-sponsored?jurisdictions=usa&page=1','_blank')"><div class="scn">Raphael Warnock</div><div class="sct">U.S. Senator &middot; Georgia<br>United States Senate</div><div class="scb"><div class="bp2"></div>Contacted &mdash; Awaiting Response</div><button class="scbtn">View Legislative Record &#8594;</button></div>
+      <div class="scc rv d5" onclick="window.open('https://pluralpolicy.com/app/person/b5d26a8a-2954-574c-abf8-1c232e928c9c/bills-sponsored?jurisdictions=usa&page=1','_blank')"><div class="scn">Lucy McBath</div><div class="sct">U.S. Representative &middot; GA-6<br>United States House</div><div class="scb"><div class="bp2"></div>Contacted &mdash; Awaiting Response</div><button class="scbtn">View Legislative Record &#8594;</button></div>
+    </div>
+    <p class="rv" style="margin-top:2rem;text-align:center;font-size:0.78rem;color:#aaa;font-style:italic">This scorecard will be updated as responses are received.</p>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap blin">
+    <div class="bh rv">
+      <span class="tag">From the Blog</span>
+      <h2 class="ttl">Real Stories. Real Stakes.</h2>
+      <p class="sub">Written by Ralph Zafar &mdash; GSU Perimeter College student and civic advocate for undocumented student access to higher education in Georgia.</p>
+    </div>
+    <div class="bg">
+      <div class="bc rv d1" onclick="oB(0)"><div class="biw"><img class="bi" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" alt="Student studying" loading="lazy"><span class="bcat">Student Story</span></div><div class="bb"><div class="bm"><span class="bdate">April 10, 2026</span><div class="bdot2"></div><span class="bauth">Ralph Zafar</span></div><h3 class="btit">Diana's Story: $10,000 Per Semester to Study in Her Own State</h3><p class="bexc">Diana grew up in Georgia. She graduated from a Georgia high school. Then she received a tuition bill that nearly broke her family.</p><div class="brd">Read Full Post <span>&#8594;</span></div></div></div>
+      <div class="bc rv d2" onclick="oB(1)"><div class="biw"><img class="bi" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Education" loading="lazy"><span class="bcat">Advocacy</span></div><div class="bb"><div class="bm"><span class="bdate">April 7, 2026</span><div class="bdot2"></div><span class="bauth">Ralph Zafar</span></div><h3 class="btit">Inside Freedom University: The Underground School Atlanta Built for Its Own Students</h3><p class="bexc">When Georgia's Board of Regents slammed the door, professors and students built their own.</p><div class="brd">Read Full Post <span>&#8594;</span></div></div></div>
+      <div class="bc rv d3" onclick="oB(2)"><div class="biw"><img class="bi" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Students" loading="lazy"><span class="bcat">Policy Analysis</span></div><div class="bb"><div class="bm"><span class="bdate">April 4, 2026</span><div class="bdot2"></div><span class="bauth">Ralph Zafar</span></div><h3 class="btit">24 States Got It Right. Why Is Georgia Still Getting It Wrong?</h3><p class="bexc">From Texas Republicans to California Democrats, tuition equity has been a rare bipartisan success.</p><div class="brd">Read Full Post <span>&#8594;</span></div></div></div>
+      <div class="bc rv d4" onclick="oB(3)"><div class="biw"><img class="bi" src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=800&q=80" alt="Advocacy" loading="lazy"><span class="bcat">Current Events</span></div><div class="bb"><div class="bm"><span class="bdate">April 1, 2026</span><div class="bdot2"></div><span class="bauth">Ralph Zafar</span></div><h3 class="btit">DACA in 2026: What Every Georgia Student Needs to Know Right Now</h3><p class="bexc">Between Fifth Circuit litigation and a hostile federal administration, the stakes have never been higher.</p><div class="brd">Read Full Post <span>&#8594;</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <div class="rh rv"><span class="tag">Go Deeper</span><h2 class="ttl">Learn More</h2><p class="sub">These organizations provide the most comprehensive, up-to-date information on this issue.</p></div>
+    <div class="rg">
+      <a href="https://higheredimmigrationportal.org/state/georgia/" target="_blank" class="rc rv d1"><div class="rn">01</div><div class="rt">Higher Ed Immigration Portal</div><div class="rd2">Comprehensive data and policy analysis on undocumented students in every U.S. state, including Georgia.</div><div class="rl">higheredimmigrationportal.org &#8594;</div></a>
+      <a href="https://freedom-university.org" target="_blank" class="rc rv d2"><div class="rn">02</div><div class="rt">Freedom University Atlanta</div><div class="rd2">The only school exclusively built for undocumented youth in the United States, based right here in Atlanta.</div><div class="rl">freedom-university.org &#8594;</div></a>
+      <a href="https://gbpi.org" target="_blank" class="rc rv d3"><div class="rn">03</div><div class="rt">Georgia Budget and Policy Institute</div><div class="rd2">In-depth analysis of Georgia's tuition equity legislation and its economic impact on the state.</div><div class="rl">gbpi.org &#8594;</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <p class="fq rv">"They chose Georgia.<br>It is time Georgia chose them back."</p>
+    <div class="fdv"></div>
+    <p class="fn">Created by Ralph Zafar &middot; GSU Perimeter College &middot; POLS 1101 Honors &middot; Spring 2026</p>
+    <p class="fs3">Sources: FWD.us &middot; Higher Ed Immigration Portal &middot; Georgia Budget and Policy Institute &middot; Georgia Recorder &middot; Presidents Alliance on Higher Education and Immigration &middot; National Immigration Law Center</p>
+    <button class="btop" onclick="goTo('hero')">Back to Top &#8593;</button>
+  </div>
+</footer>
+
+<!-- ══ BLOG MODAL ══ -->
+<div class="ov" id="blogMo" onclick="if(event.target===this)cB()">
+  <div class="omd">
+    <button class="mcl" onclick="cB()">&#10005;</button>
+    <img class="mhi" id="mhi" src="" alt="">
+    <div class="mcon">
+      <span class="mcat" id="mcat"></span>
+      <h2 class="mttl" id="mttl"></h2>
+      <div class="mmeta">
+        <div class="mau"><div class="mav">RZ</div><div class="mai"><div class="mn">Ralph Zafar</div><div class="mr">GSU Perimeter College &middot; POLS 1101 Honors</div></div></div>
+        <div class="mdt" id="mdt"></div>
+      </div>
+      <div class="mbdy" id="mbdy"></div>
+      <div class="msrc" id="msrc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AJC LETTER MODAL ══ -->
+<div class="ov" id="ajcMo" onclick="if(event.target===this)closeAJC()">
+  <div class="omd">
+    <button class="mcl" onclick="closeAJC()">&#10005;</button>
+    <div class="mcon">
+      <span class="mcat">Pre-Written Letter to the Editor</span>
+      <h2 class="mttl" style="font-size:1.6rem">Write to the Atlanta Journal-Constitution</h2>
+      <p style="font-size:0.9rem;color:#555;line-height:1.8;margin-bottom:1.25rem;font-weight:300">Copy the letter below, then send it to the AJC letters editor. Letters under 200 words have the best chance of publication.</p>
+      <div class="ajc-email">Send to: <strong>letters@ajc.com</strong> &nbsp;&middot;&nbsp; Subject: <strong>Letter to the Editor: Georgia Tuition Policy</strong></div>
+      <textarea class="ajc-letter" id="ajcLetter" readonly>Dear Editor,
+
+A student grows up in Georgia. She attends Georgia schools for thirteen years, graduates, and then receives a tuition bill three to four times higher than her classmates — because of Georgia Senate Bill 492 and Board of Regents Policy 4.1.6.
+
+Approximately 13,000 young Georgians face this barrier right now. Twenty-four other states — including Texas, Oklahoma, and Utah — have already resolved this by granting in-state tuition to undocumented students who graduate from in-state high schools. Georgia is one of only three states in the country that still bans undocumented students from its most selective public universities entirely.
+
+These students did not choose where they were born. They chose Georgia, attending our schools for over a decade. It is time Georgia chose them back.
+
+Sincerely,
+[Your Name]
+[Your City], Georgia</textarea>
+      <div class="ajc-btns">
+        <button class="ajc-copy" id="ajcCopyBtn" onclick="copyAJC()">Copy Letter</button>
+        <button class="ajc-open" onclick="openMailAJC()">Open in Email Client &#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SHARE MODAL ══ -->
+<div class="ov" id="shareMo" onclick="if(event.target===this)closeShare()">
+  <div class="omd">
+    <button class="mcl" onclick="closeShare()">&#10005;</button>
+    <div class="mcon">
+      <span class="mcat">Spread the Word</span>
+      <h2 class="mttl" style="font-size:1.6rem">Share This Page</h2>
+      <p style="font-size:0.9rem;color:#555;line-height:1.8;margin-bottom:1.5rem;font-weight:300">Every share puts this in front of someone who might not know this is happening. Copy the link or share directly.</p>
+      <div class="sh-url-row">
+        <input class="sh-url-inp" id="shUrlInp" type="text" readonly value="">
+        <button class="sh-url-btn" id="shCopyBtn" onclick="copyShareLink()">Copy Link</button>
+      </div>
+      <div class="sh-divider">or share on</div>
+      <div class="sh-opts">
+        <button class="sh-opt" style="background:#000;color:#fff" onclick="shX()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share on X
+        </button>
+        <button class="sh-opt" style="background:#1877f2;color:#fff" onclick="shF()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Share on Facebook
+        </button>
+        <button class="sh-opt" style="background:#25D366;color:#fff" onclick="shWA()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </button>
+        <button class="sh-opt" style="background:#0077b5;color:#fff" onclick="shLI()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUCCESS OVERLAY ══ -->
+<div id="sucOv" onclick="if(event.target===this)closeSuccess()">
+  <div class="suc-box">
+    <div class="suc-ico">
+      <svg width="44" height="44" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="22" fill="rgba(39,174,96,0.08)" stroke="#27ae60" stroke-width="2"/>
+        <polyline class="suc-ck" id="sucCk" points="13,25 22,34 37,16" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h3 id="sucName">Thank you!</h3>
+    <p>Your signature has been recorded and will be submitted<br>directly to Georgia legislators.</p>
+    <p class="sig-ct" id="sucCount"></p>
+    <div class="suc-sh">
+      <button class="sh-x" onclick="shX()">Share on X &#8594;</button>
+      <button class="sh-fb" onclick="shF()">Share on Facebook &#8594;</button>
+    </div>
+    <button class="suc-close" onclick="closeSuccess()">Close</button>
+  </div>
+</div>
+
+<script>
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
+function goTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById("mm").classList.remove("op");
+  document.body.style.overflow = "";
+}
+
+// ── MOBILE MENU ──────────────────────────────────────────────────────────────
+document.getElementById("hb").onclick = function() {
+  document.getElementById("mm").classList.add("op");
+  document.body.style.overflow = "hidden";
+};
+document.getElementById("mc2").onclick = function() {
+  document.getElementById("mm").classList.remove("op");
+  document.body.style.overflow = "";
+};
+
+// ── PROGRESS BAR & NAV SCROLL ────────────────────────────────────────────────
+window.addEventListener("scroll", function() {
+  var s = document.documentElement;
+  document.getElementById("pb").style.width = ((s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100) + "%";
+  document.getElementById("nav").classList.toggle("sc", window.scrollY > 60);
+});
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────────────────
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add("v");
+      if (e.target.classList.contains("sti")) e.target.classList.add("rd");
+    }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll(".rv,.rvl,.rvr,.fs2,.cpc,.sti").forEach(function(el){ io.observe(el); });
+
+// ── STAT COUNTERS ────────────────────────────────────────────────────────────
+var cio = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !e.target.dataset.d) {
+      e.target.dataset.d = "1";
+      var tgt = parseInt(e.target.dataset.t), suf = e.target.dataset.s || "", dur = 2000, st = performance.now();
+      (function tick(now) {
+        var pr = Math.min((now-st)/dur,1), ea = 1-Math.pow(1-pr,4);
+        e.target.innerHTML = (tgt===0?"0":Math.round(ea*tgt).toLocaleString()) + suf;
+        if (pr<1) requestAnimationFrame(tick);
+      })(st);
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll(".cu").forEach(function(el){ cio.observe(el); });
+
+// ── SIGNATURE COUNT ──────────────────────────────────────────────────────────
+var sigs = [];
+try { sigs = JSON.parse(localStorage.getItem("gdd_s")||"[]"); } catch(e){}
+function upC() { document.getElementById("sigc").textContent = sigs.length; }
+upC();
+
+// ── PETITION FORM ────────────────────────────────────────────────────────────
+function tCB() {
+  var cb = document.getElementById("ccb"), r = document.getElementById("rck");
+  cb.classList.toggle("ck"); r.checked = cb.classList.contains("ck");
+  document.getElementById("cerr").style.display = "none";
+  document.getElementById("wck").classList.remove("he");
+}
+function vF(id, wid, ok) {
+  var w = document.getElementById(wid), inp = document.getElementById(id);
+  if (!ok) { w.classList.add("he"); if(inp) inp.classList.add("er"); return false; }
+  w.classList.remove("he"); if(inp) inp.classList.remove("er"); return true;
+}
+document.querySelectorAll(".finp").forEach(function(inp) {
+  inp.addEventListener("input", function() {
+    this.classList.remove("er");
+    var w = this.closest(".fwrap"); if(w) w.classList.remove("he");
+  });
+});
+document.getElementById("pform").addEventListener("submit", function(e) {
+  e.preventDefault();
+  var fn = document.getElementById("fn").value.trim();
+  var ln = document.getElementById("ln").value.trim();
+  var em = document.getElementById("em").value.trim();
+  var ct = document.getElementById("ct").value.trim();
+  var ck = document.getElementById("ccb").classList.contains("ck");
+  var eo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
+  var v = true;
+  v = vF("fn","wfn",fn.length>0) && v;
+  v = vF("ln","wln",ln.length>0) && v;
+  v = vF("em","wem",eo) && v;
+  v = vF("ct","wct",ct.length>0) && v;
+  if (!ck) { document.getElementById("cerr").style.display="block"; document.getElementById("wck").classList.add("he"); v=false; }
+  if (!v) return;
+  var btn = document.getElementById("sbtn");
+  btn.textContent = "Submitting…"; btn.disabled = true;
+  sigs.push({fn:fn,ln:ln,em:em,ct:ct,ts:new Date().toISOString()});
+  try { localStorage.setItem("gdd_s",JSON.stringify(sigs)); } catch(x){}
+  upC();
+  // Show success overlay
+  setTimeout(function() {
+    document.getElementById("sucName").textContent = "Thank you, " + fn + "!";
+    document.getElementById("sucCount").textContent = sigs.length + " Georgian" + (sigs.length===1?"":"s") + " have now signed";
+    document.getElementById("sucOv").classList.add("op");
+    document.body.style.overflow = "hidden";
+    setTimeout(function(){ document.getElementById("sucCk").classList.add("dn"); }, 150);
+    // Reset form
+    document.getElementById("pform").reset();
+    document.getElementById("ccb").classList.remove("ck");
+    btn.textContent = "Sign the Petition"; btn.disabled = false;
+    btn.innerHTML = 'Sign the Petition <span class="sarr">&#8594;</span>';
+  }, 600);
+});
+function closeSuccess() {
+  document.getElementById("sucOv").classList.remove("op");
+  document.getElementById("sucCk").classList.remove("dn");
+  document.body.style.overflow = "";
+}
+
+// ── BLOG MODAL ───────────────────────────────────────────────────────────────
+var posts = [
+  {
+    cat:"Student Story", date:"April 10, 2026",
+    title:"Diana's Story: $10,000 Per Semester to Study in Her Own State",
+    img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80",
+    body:`<p>Diana grew up in Georgia. She attended Georgia public schools from kindergarten through twelfth grade. She studied hard, earned her diploma, and was accepted to the University of North Georgia. Then she received her first tuition bill.</p>
+<p>Nearly <strong>$10,000 per semester</strong> — almost four times what her classmates paid — because of Georgia Senate Bill 492, which mandates that undocumented students, including DACA recipients, pay out-of-state tuition rates at every public college and university in the state.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&q=80" alt="University campus gates" loading="lazy">
+<blockquote>I did not want to give up because of difficult circumstances. But the cost was relentless. — Diana, speaking to the Georgia Budget and Policy Institute</blockquote>
+<p>She took a lower course load than she wanted because she could not afford to go full time. She won scholarships, transferred to a private college for more aid, and eventually had to take a break from school entirely to find enough funding to continue.</p>
+<h3>The Math Is Brutal</h3>
+<p>Georgia is home to <strong>20,900 DACA recipients</strong>, ranking eighth in the nation. These are people who grew up in Georgia neighborhoods, attended Georgia schools, and in many cases have never lived anywhere else. Yet they are charged tuition rates designed for students from other states who have never paid a dollar of Georgia taxes.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80" alt="Student reviewing financial documents" loading="lazy">
+<p>Georgia actively gives tuition waivers to students from neighboring states through Border Resident Waivers at 16 different colleges. A student from Tallahassee who has never set foot in Georgia can access cheaper tuition than Diana, who grew up here.</p>`,
+    sources:[
+      {n:1,t:"Georgia Budget and Policy Institute: Every Georgian Deserves Access to Higher Education",u:"https://gbpi.org/every-georgian-deserves-access-to-higher-education/"},
+      {n:2,t:"Higher Ed Immigration Portal: Georgia State Page",u:"https://higheredimmigrationportal.org/state/georgia/"},
+      {n:3,t:"FWD.us: An estimated 13k young adults in Georgia could benefit from tuition equity",u:"https://www.fwd.us/news/georgia-tuition-equity/"}
+    ]
+  },
+  {
+    cat:"Advocacy", date:"April 7, 2026",
+    title:"Inside Freedom University: The Underground School Atlanta Built for Its Own Students",
+    img:"https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80",
+    body:`<p>When the Georgia Board of Regents passed Policy 4.1.6 in 2010 — banning undocumented students from the state's most selective public universities — it expected the matter to be settled. What it did not expect was four University of Georgia professors and five UGA students deciding to build an entirely new university in response.</p>
+<p>Freedom University opened in Athens, Georgia on <strong>October 9, 2011</strong>. Its founding was a direct, organized act of resistance — a modern-day Freedom School in the tradition of the civil rights movement that Georgia helped birth.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=900&q=80" alt="University classroom" loading="lazy">
+<blockquote>Our mission is to educate and empower undocumented students and fulfill their human right to education. Our goal is to end modern segregation in higher education. — Freedom University Mission Statement</blockquote>
+<h3>What Freedom University Actually Does</h3>
+<p>Freedom University provides <strong>tuition-free college preparation courses</strong>, college and scholarship application assistance, full legal representation, mental health support, and social movement leadership training — all at no cost to students. Over the last several academic years, <strong>50 percent of Freedom University graduating students</strong> have earned full scholarships to colleges and universities outside Georgia.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=900&q=80" alt="Students gathered in community" loading="lazy">
+<p>The organization's advocacy directly contributed to Emory University's 2015 decision to accept DACA recipients, and to the Board of Regents removing Georgia State University from its banned institutions list in 2016. Freedom University exists because Georgia's government failed its own students. It should not have to exist.</p>`,
+    sources:[
+      {n:1,t:"Freedom University: Official Mission Statement",u:"https://www.freedom-university.org/mission"},
+      {n:2,t:"Wikipedia: Freedom University",u:"https://en.wikipedia.org/wiki/Freedom_University"},
+      {n:3,t:"Georgia State Signal: Fighting for an Education",u:"https://georgiastatesignal.com/fighting-for-an-education-georgia-student-organizations-band-together-for-the-admittance-of-undocumented-students/"}
+    ]
+  },
+  {
+    cat:"Policy Analysis", date:"April 4, 2026",
+    title:"24 States Got It Right. Why Is Georgia Still Getting It Wrong?",
+    img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80",
+    body:`<p>In 2001, Texas Republican Governor Rick Perry signed the Texas Dream Act — making Texas the first state in the nation to grant in-state tuition to undocumented students who graduated from in-state high schools. Perry was not acting out of progressive ideology. He was acting out of economic pragmatism: Texas had educated these students through 13 years of public schooling and saw no sense in pricing them out of the next step.</p>
+<p>In the 24 years since, <strong>24 states and Washington D.C.</strong> have followed Texas's lead. The list includes deeply red states — Oklahoma, Utah, Kansas, Nebraska, Kentucky — as well as blue states.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=900&q=80" alt="United States Capitol building" loading="lazy">
+<blockquote>Between 2001 and 2025, 25 states and the District of Columbia enacted their own tuition equity policies, opening access to public higher education for a generation of talented students. — The Hill, November 2025</blockquote>
+<h3>Georgia's Position Is Increasingly Isolated</h3>
+<p>While other states moved forward, Georgia doubled down. Today, Georgia is one of only three states — alongside Alabama and South Carolina — that actively prohibit undocumented students from enrolling in all or some public colleges entirely. Georgia is <strong>actively worse</strong> than nearly every other state in the country on this issue, including states that share its political identity.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=900&q=80" alt="Map of the United States" loading="lazy">
+<h3>The Economic Case Georgia Cannot Ignore</h3>
+<p>According to FWD.us, approximately <strong>13,000 young adults</strong> in Georgia would immediately benefit from tuition equity. These individuals already contribute $211 million in spending power and nearly $25 million in state and local taxes annually. When Georgia prices these students out, it does not save money — it exports talent it already paid to develop.</p>`,
+    sources:[
+      {n:1,t:"The Hill: Tuition equity for undocumented students is good for everyone, November 2025",u:"https://thehill.com/opinion/education/5620480-tuition-equity-policies-under-attack/amp/"},
+      {n:2,t:"National Immigration Law Center: Basic Facts About In-State Tuition",u:"https://www.nilc.org/resources/basic-facts-instate/"},
+      {n:3,t:"FWD.us: In-State Tuition for Dreamers Benefits Us All",u:"https://www.fwd.us/news/in-state-tuition-for-dreamers-undocumented-students-benefits-us-all/"},
+      {n:4,t:"Georgia Recorder: Dalton Republican state lawmaker tries again on legislation to give DACA students in-state tuition",u:"https://georgiarecorder.com/briefs/dalton-republican-state-lawmaker-tries-again-on-legislation-to-give-daca-students-in-state-tuition/"}
+    ]
+  },
+  {
+    cat:"Current Events", date:"April 1, 2026",
+    title:"DACA in 2026: What Every Georgia Student Needs to Know Right Now",
+    img:"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=1200&q=80",
+    body:`<p>If you are an undocumented student in Georgia in 2026, the legal and political landscape around your future has never been more unstable. DACA — the Deferred Action for Childhood Arrivals program that has protected roughly 800,000 young people from deportation since 2012 — is under simultaneous attack from multiple directions.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=900&q=80" alt="Students at a campus demonstration" loading="lazy">
+<h3>The Legal Status of DACA Right Now</h3>
+<p>On January 17, 2025, the Fifth Circuit Court of Appeals issued its most recent ruling finding major parts of the Biden administration's 2022 DACA regulation unlawful and returned the case to the district court. Critically, the court preserved the stay for <strong>existing DACA recipients</strong> — meaning people who already have DACA can still renew. But new applications remain blocked.</p>
+<blockquote>Less than one third of the 510,000 undocumented students currently enrolled in higher education are eligible for or currently benefit from DACA. — Higher Ed Immigration Portal, 2025</blockquote>
+<h3>Federal Actions in 2025-2026</h3>
+<p>In July 2025, the Department of Education issued an interpretive rule ending federal education grants for undocumented students. The administration also rescinded the Protected Areas Memorandum — meaning immigration enforcement can now legally occur in or near educational institutions. On April 29, 2025, President Trump issued an executive order attempting to block states from offering in-state tuition to undocumented students.</p>
+<img class="pimg" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80" alt="Student studying late at night" loading="lazy">
+<h3>What This Means for Georgia</h3>
+<p>Georgia's already-restrictive policies now exist within a federal environment that is actively hostile to undocumented students at every level. The urgency of state-level action — reforming Georgia's own policies through SB 492 and Policy 4.1.6 — has never been greater. What Georgia's own legislators do in the next session may determine the educational futures of thousands of people who have no other home.</p>`,
+    sources:[
+      {n:1,t:"Higher Ed Immigration Portal: Federal Policies on Undocumented Students with and without DACA",u:"https://www.higheredimmigrationportal.org/national/federal-policies/daca/"},
+      {n:2,t:"Presidents Alliance on Higher Education: Defending Access and Opportunity for Undocumented Students, November 2025",u:"https://www.presidentsalliance.org/webinar-recording-and-resources-defending-access-and-opportunity-for-undocumented-students-in-higher-education/"},
+      {n:3,t:"FWD.us: Key Resources on In-State Tuition Executive Order, May 2025",u:"https://www.fwd.us/news/in-state-tuition-for-dreamers-undocumented-students-benefits-us-all/"},
+      {n:4,t:"EdWeek: Undocumented Students Still Have a Right to Education. Will That Change in 2026?",u:"https://www.edweek.org/policy-politics/undocumented-students-still-have-a-right-to-education-will-that-change-in-2026/2025/12"}
+    ]
+  }
+];
+
+function oB(i) {
+  var p = posts[i];
+  document.getElementById("mcat").textContent = p.cat;
+  document.getElementById("mttl").textContent = p.title;
+  document.getElementById("mdt").textContent = p.date;
+  document.getElementById("mhi").src = p.img;
+  document.getElementById("mhi").alt = p.title;
+  document.getElementById("mbdy").innerHTML = p.body;
+  var s = "<h4>Sources</h4>";
+  p.sources.forEach(function(src){ s += '<div class="srcl"><span class="srcn">['+src.n+']</span><a href="'+src.u+'" target="_blank" rel="noopener">'+src.t+'</a></div>'; });
+  document.getElementById("msrc").innerHTML = s;
+  document.getElementById("blogMo").classList.add("op");
+  document.body.style.overflow = "hidden";
+}
+function cB() { document.getElementById("blogMo").classList.remove("op"); document.body.style.overflow = ""; }
+
+// ── AJC MODAL ────────────────────────────────────────────────────────────────
+function openAJC() { document.getElementById("ajcMo").classList.add("op"); document.body.style.overflow = "hidden"; }
+function closeAJC() { document.getElementById("ajcMo").classList.remove("op"); document.body.style.overflow = ""; }
+function copyAJC() {
+  var ta = document.getElementById("ajcLetter");
+  var btn = document.getElementById("ajcCopyBtn");
+  // Try modern clipboard API first, fall back to execCommand
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(ta.value).then(function() {
+      btn.textContent = "Copied! ✓"; btn.style.background = "var(--green)";
+      setTimeout(function(){ btn.textContent = "Copy Letter"; btn.style.background = ""; }, 2500);
+    }).catch(function(){ fallbackCopy(ta, btn); });
+  } else {
+    fallbackCopy(ta, btn);
+  }
+}
+function fallbackCopy(ta, btn) {
+  ta.select(); ta.setSelectionRange(0, 99999);
+  try { document.execCommand('copy'); btn.textContent = "Copied! ✓"; btn.style.background = "var(--green)"; }
+  catch(e) { btn.textContent = "Select text above to copy"; }
+  setTimeout(function(){ btn.textContent = "Copy Letter"; btn.style.background = ""; }, 2500);
+}
+function openMailAJC() {
+  var subj = encodeURIComponent("Letter to the Editor: Georgia Tuition Policy");
+  var body = encodeURIComponent(document.getElementById("ajcLetter").value);
+  window.open("mailto:letters@ajc.com?subject=" + subj + "&body=" + body, "_blank");
+}
+
+// ── SHARE MODAL ──────────────────────────────────────────────────────────────
+var PAGE_URL = window.location.href;
+function openShare() {
+  document.getElementById("shUrlInp").value = PAGE_URL;
+  document.getElementById("shareMo").classList.add("op");
+  document.body.style.overflow = "hidden";
+}
+function closeShare() { document.getElementById("shareMo").classList.remove("op"); document.body.style.overflow = ""; }
+function copyShareLink() {
+  var btn = document.getElementById("shCopyBtn");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(PAGE_URL).then(function() {
+      btn.textContent = "Copied! ✓"; btn.style.background = "var(--green)";
+      setTimeout(function(){ btn.textContent = "Copy Link"; btn.style.background = ""; }, 2500);
+    }).catch(function(){ fallbackShareCopy(btn); });
+  } else {
+    fallbackShareCopy(btn);
+  }
+}
+function fallbackShareCopy(btn) {
+  var inp = document.getElementById("shUrlInp"); inp.select(); inp.setSelectionRange(0,99999);
+  try { document.execCommand('copy'); btn.textContent = "Copied! ✓"; btn.style.background = "var(--green)"; }
+  catch(e) { btn.textContent = "Manually copy above"; }
+  setTimeout(function(){ btn.textContent = "Copy Link"; btn.style.background = ""; }, 2500);
+}
+function shX()  { window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent("Georgia is turning away 13,000 of its own students — people who grew up here and graduated from Georgia schools. Sign the petition: " + PAGE_URL + " #GeorgiaDreamDenied #TuitionEquity"), "_blank"); }
+function shF()  { window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(PAGE_URL), "_blank"); }
+function shWA() { window.open("https://wa.me/?text=" + encodeURIComponent("Georgia is turning away 13,000 of its own students. Sign the petition: " + PAGE_URL), "_blank"); }
+function shLI() { window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(PAGE_URL), "_blank"); }
+
+// ── ESC KEY ───────────────────────────────────────────────────────────────────
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") { cB(); closeAJC(); closeShare(); closeSuccess(); }
+});
+
+// ── CSV EXPORT ───────────────────────────────────────────────────────────────
+document.addEventListener("keydown", function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key === "D") {
+    e.preventDefault();
+    if (!sigs.length) { alert("No signatures yet."); return; }
+    var rows = [["First Name","Last Name","Email","City","Timestamp"]];
+    sigs.forEach(function(s){ rows.push([s.fn,s.ln,s.em,s.ct,s.ts]); });
+    var csv = rows.map(function(r){ return r.map(function(v){ return '"'+v+'"'; }).join(","); }).join("\n");
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+    a.download = "petition_signatures_" + new Date().toISOString().split("T")[0] + ".csv";
+    a.click();
+  }
+});
+</script>
+</body>
+</html>
